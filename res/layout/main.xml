@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout 
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
+  android:orientation="horizontal"
   android:layout_width="fill_parent"
-  android:background="#000000" 
+  android:background="#ffffff" 
   android:layout_height="fill_parent">
   
-  <view class="com.ledpixelart.piledriver.MainActivity$GifView" 
+  <view class="com.SmartIXD_Neato.MainActivity$GifView" 
     android:id="@+id/gifView"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content" />
-        
- <!-- 
-   
-     <Button
-        android:id="@+id/reload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reload"/>
-        
-         -->
-     
+             
     <GridView
         android:id="@+id/gridview"
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent"
-        android:background="#000000"   
-        android:numColumns="3"
+        android:background="#ffffff"
+        android:orientation="horizontal"   
+        android:numColumns="2"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"/>
-
+        android:stretchMode="columnWidth"/>
+    
 </LinearLayout>

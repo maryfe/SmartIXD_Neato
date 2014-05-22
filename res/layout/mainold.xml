@@ -6,7 +6,7 @@
   android:background="#000000" 
   android:layout_height="fill_parent">
   
-  <view class="com.ledpixelart.piledriver.MainActivity$GifView" 
+  <view class="com.SmartIXD_Neato.MainActivity$GifView" 
     android:id="@+id/gifView"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content" />
