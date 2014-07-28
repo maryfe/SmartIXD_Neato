@@ -54,7 +54,7 @@
                                   android:resource="@xml/accessory_filter" />
           </activity>
           
-           <activity android:name=".preferences" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+           <activity android:name=".preferences" android:screenOrientation="landscape" android:launchMode="singleTask"></activity>
         
         
     <!--   <activity android:name=".MainActivity"
