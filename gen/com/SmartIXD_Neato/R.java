@@ -41,14 +41,8 @@ public final class R {
         public static final int firstTimeSetup1=0x7f090002;
         public static final int firstTimeSetup2=0x7f090003;
         public static final int firstTimeSetupCounter=0x7f090005;
-        public static final int gifView=0x7f090000;
-        public static final int gridview=0x7f090001;
-        public static final int menu_about=0x7f09000c;
-        public static final int menu_btPair=0x7f090008;
-        public static final int menu_camera=0x7f090009;
-        public static final int menu_instructions=0x7f09000d;
-        public static final int menu_pixelJoint=0x7f09000a;
-        public static final int menu_prefs=0x7f09000b;
+        public static final int gifView=0x7f090001;
+        public static final int gridview=0x7f090000;
         public static final int reload=0x7f090007;
         public static final int sdcard=0x7f090006;
     }

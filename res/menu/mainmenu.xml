@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     
 
-<item android:id="@+id/menu_btPair"
+<!-- <item android:id="@+id/menu_btPair"
 android:title="@string/menu_btPair_title"
 android:icon="@drawable/ic_action_bluetooth"
 android:showAsAction="always"
@@ -36,7 +36,7 @@ android:icon="@drawable/ic_menu_info_details"
 <item android:id="@+id/menu_instructions"
 android:title="@string/menu_instructions_title"
 android:icon="@drawable/ic_menu_database"
-/>
+/> -->
 
 
 

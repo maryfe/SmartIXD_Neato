@@ -24,14 +24,8 @@ int id firstTimeInstructions 0x7f090004
 int id firstTimeSetup1 0x7f090002
 int id firstTimeSetup2 0x7f090003
 int id firstTimeSetupCounter 0x7f090005
-int id gifView 0x7f090000
-int id gridview 0x7f090001
-int id menu_about 0x7f09000c
-int id menu_btPair 0x7f090008
-int id menu_camera 0x7f090009
-int id menu_instructions 0x7f09000d
-int id menu_pixelJoint 0x7f09000a
-int id menu_prefs 0x7f09000b
+int id gifView 0x7f090001
+int id gridview 0x7f090000
 int id reload 0x7f090007
 int id sdcard 0x7f090006
 int layout main 0x7f030000

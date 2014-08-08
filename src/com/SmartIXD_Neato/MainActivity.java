@@ -64,6 +64,8 @@ import ioio.lib.util.BaseIOIOLooper;
 import ioio.lib.util.IOIOLooper;
 import ioio.lib.util.android.IOIOActivity;
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -251,6 +253,7 @@ public class MainActivity extends IOIOActivity implements OnItemClickListener, O
 	private Bitmap cameraBMP;
 	
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -258,6 +261,7 @@ public class MainActivity extends IOIOActivity implements OnItemClickListener, O
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		 setContentView(R.layout.main);
 	      display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+	     	   
 	        
 	      ///new gridview code
 	     gridview = (GridView) findViewById(R.id.gridview);
@@ -267,8 +271,8 @@ public class MainActivity extends IOIOActivity implements OnItemClickListener, O
 	     
 	      gridview.setKeepScreenOn(false);
 		 
-	      gifView = (GifView) findViewById(R.id.gifView); //gifview takes care of the gif decoding
-	      gifView.setGif(R.drawable.zzzblank);  //code will crash if a dummy gif is not loaded initially
+	     gifView = (GifView) findViewById(R.id.gifView); //gifview takes care of the gif decoding
+	     gifView.setGif(R.drawable.zzzblank);  //code will crash if a dummy gif is not loaded initially
 	     // proxTextView_ = (TextView)findViewById(R.id.proxTextView);
 	      
 	     //let's get the app version so we'll know if we need to add new animations to the user's app   
@@ -379,32 +383,47 @@ public class MainActivity extends IOIOActivity implements OnItemClickListener, O
 	          // Handle other intents, such as being started from the home screen
 	      }  */
         
+	    //Go FullScreen onCreate   
+	      
+	   View decorView = getWindow().getDecorView();
+	   // Hide the status bar.
+//	   int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+	   int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+
+	   
+	   decorView.setSystemUiVisibility(uiOptions);
+	   // Remember that you should never show the action bar if the
+	   // status bar is hidden, so hide that too if necessary.
+	   ActionBar actionBar = getActionBar();
+	   actionBar.hide();
+	      
         
 	}
 	
-	/* protected void onResume() {
-         super.onResume();
-         
-         Intent intent = getIntent();
-	      String action = intent.getAction();
-	      String type = intent.getType();
+// protected void onResume() {
 
-	      if (Intent.ACTION_SEND.equals(action) && type != null) {
-	        //  if ("text/plain".equals(type)) {
-	        //      handleSendText(intent); // Handle text being sent
-	        //  } 
-	          
-	       if (type.startsWith("image/")) {
-	              handleSendImage(intent); // Handle single image being sent
-	          }
-	      } 
-	      
-	     else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
-	          if (type.startsWith("image/")) {
-	              handleSendMultipleImages(intent); // Handle multiple images being sent
-	          }
-	      }
-     }*/
+//         super.onResume();
+//         
+//         Intent intent = getIntent();
+//	      String action = intent.getAction();
+//	      String type = intent.getType();
+//
+//	      if (Intent.ACTION_SEND.equals(action) && type != null) {
+//	        //  if ("text/plain".equals(type)) {
+//	        //      handleSendText(intent); // Handle text being sent
+//	        //  } 
+//	          
+//	       if (type.startsWith("image/")) {
+//	              handleSendImage(intent); // Handle single image being sent
+//	          }
+//	      } 
+//	      
+//	     else if (Intent.ACTION_SEND_MULTIPLE.equals(action) && type != null) {
+//	          if (type.startsWith("image/")) {
+//	              handleSendMultipleImages(intent); // Handle multiple images being sent
+//	          }
+//	      }
+//     }
 	 
 	
  
@@ -975,9 +994,10 @@ private void copyGIF64Source() {
 		
 } //end async task
 	    
-    private void continueOnCreate() {
-         
-         
+
+	private void continueOnCreate() {
+        
+      
     	 //now let's load the files asynch
     	
     	 myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
@@ -1328,8 +1348,11 @@ private void copyGIF64Source() {
 
     	 }*/
 
+
 	@Override
  public  boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {  
+		
+		
 		if (deviceFound == 1) { 
 	  		//********we need to reset everything because the user could have been already running an animation
 	  	     x = 0;
@@ -1489,8 +1512,10 @@ private void copyGIF64Source() {
     }
 }
     
-  public void onItemClick(AdapterView<?> parent, View v, int position, long id) {    //we go here when the user tapped an image from the initial grid    
-        
+
+public void onItemClick(AdapterView<?> parent, View v, int position, long id) {    //we go here when the user tapped an image from the initial grid    
+      
+//Called On Click
 	     
 	        if (deviceFound == 1) { 
 			  		//********we need to reset everything because the user could have been already running an animation
@@ -2192,71 +2217,71 @@ private void copyGIF64Source() {
 	    {
 	       
 			
-	      if (item.getItemId() == R.id.menu_instructions) {
-	 	    	AlertDialog.Builder alert=new AlertDialog.Builder(this);
-	 	      	alert.setTitle(getResources().getString(R.string.setupInstructionsStringTitle)).setIcon(R.drawable.icon).setMessage(getResources().getString(R.string.setupInstructionsString)).setNeutralButton(getResources().getString(R.string.OKText), null).show();
-	 	   }
-	    	
-		  if (item.getItemId() == R.id.menu_about) {
-			  
-			    AlertDialog.Builder alert=new AlertDialog.Builder(this);
-		      	alert.setTitle(getString(R.string.menu_about_title)).setIcon(R.drawable.icon).setMessage(getString(R.string.menu_about_summary) + "\n\n" + getString(R.string.versionString) + " " + app_ver + "\n"
-		      			+ getString(R.string.FirmwareVersionString) + " " + pixelFirmware + "\n"
-		      			+ getString(R.string.HardwareVersionString) + " " + pixelHardwareID + "\n"
-		      			+ getString(R.string.BootloaderVersionString) + " " + pixelBootloader + "\n"
-		      			+ getString(R.string.LibraryVersionString) + " " + IOIOLibVersion).setNeutralButton(getResources().getString(R.string.OKText), null).show();	
-		   }
-	    	
-	    	if (item.getItemId() == R.id.menu_prefs)
-	       {
-	    		
-	    		appAlreadyStarted = 0;    		
-	    		Intent intent = new Intent()
-	       				.setClass(this,
-	       						com.SmartIXD_Neato.preferences.class);   
-	    				this.startActivityForResult(intent, WENT_TO_PREFERENCES);
-	       }
-	    	
-	    	if (item.getItemId() == R.id.menu_btPair)
-		       {
-	    			
-	    		if (pixelHardwareID.substring(0,4).equals("MINT")) { //then it's a PIXEL V1 unit
-	    			showToast("Bluetooth Pair to PIXEL using code: 4545");
-	    		}
-	    		else { //we have a PIXEL V2 unit
-	    			showToast("Bluetooth Pair to PIXEL using code: 0000");
-	    		}
-	    		
-	    		Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
-		        startActivityForResult(intent, REQUEST_PAIR_DEVICE);
-		        
-		       }
-	    	
-
-	    	if (item.getItemId() == R.id.menu_pixelJoint)
-		       {
-	    			String downloadURL = "www.pixeljoint.com/pixels/new_icons.asp?search=&dimo=%3D&dim=32&colorso=%3E%3D&colors=2&tran=&anim=&iso=&av=&owner=&d=&dosearch=1&ob=search&action=search";
-	    			
-	    			if (matrix_model == 10) { //if 64x64
-	    				downloadURL = downloadURL_64;
-	    			}
-	    			else {
-	    				downloadURL = downloadURL_32;
-	    			}
-	    			
-			    	Intent i = new Intent(Intent.ACTION_VIEW);
-			    	i.setData(Uri.parse("http://" + downloadURL));
-			    	startActivity(i);
-		       }
-	    	
-	    	if (item.getItemId() == R.id.menu_camera)
-		       {
-	    		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-	    	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-	    	     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-	    	    }
-		       }
-	    	
+//	      if (item.getItemId() == R.id.menu_instructions) {
+//	 	    	AlertDialog.Builder alert=new AlertDialog.Builder(this);
+//	 	      	alert.setTitle(getResources().getString(R.string.setupInstructionsStringTitle)).setIcon(R.drawable.icon).setMessage(getResources().getString(R.string.setupInstructionsString)).setNeutralButton(getResources().getString(R.string.OKText), null).show();
+//	 	   }
+//	    	
+//		  if (item.getItemId() == R.id.menu_about) {
+//			  
+//			    AlertDialog.Builder alert=new AlertDialog.Builder(this);
+//		      	alert.setTitle(getString(R.string.menu_about_title)).setIcon(R.drawable.icon).setMessage(getString(R.string.menu_about_summary) + "\n\n" + getString(R.string.versionString) + " " + app_ver + "\n"
+//		      			+ getString(R.string.FirmwareVersionString) + " " + pixelFirmware + "\n"
+//		      			+ getString(R.string.HardwareVersionString) + " " + pixelHardwareID + "\n"
+//		      			+ getString(R.string.BootloaderVersionString) + " " + pixelBootloader + "\n"
+//		      			+ getString(R.string.LibraryVersionString) + " " + IOIOLibVersion).setNeutralButton(getResources().getString(R.string.OKText), null).show();	
+//		   }
+//	    	
+//	    	if (item.getItemId() == R.id.menu_prefs)
+//	       {
+//	    		
+//	    		appAlreadyStarted = 0;    		
+//	    		Intent intent = new Intent()
+//	       				.setClass(this,
+//	       						com.SmartIXD_Neato.preferences.class);   
+//	    				this.startActivityForResult(intent, WENT_TO_PREFERENCES);
+//	       }
+//	    	
+//	    	if (item.getItemId() == R.id.menu_btPair)
+//		       {
+//	    			
+//	    		if (pixelHardwareID.substring(0,4).equals("MINT")) { //then it's a PIXEL V1 unit
+//	    			showToast("Bluetooth Pair to PIXEL using code: 4545");
+//	    		}
+//	    		else { //we have a PIXEL V2 unit
+//	    			showToast("Bluetooth Pair to PIXEL using code: 0000");
+//	    		}
+//	    		
+//	    		Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
+//		        startActivityForResult(intent, REQUEST_PAIR_DEVICE);
+//		        
+//		       }
+//	    	
+//
+//	    	if (item.getItemId() == R.id.menu_pixelJoint)
+//		       {
+//	    			String downloadURL = "www.pixeljoint.com/pixels/new_icons.asp?search=&dimo=%3D&dim=32&colorso=%3E%3D&colors=2&tran=&anim=&iso=&av=&owner=&d=&dosearch=1&ob=search&action=search";
+//	    			
+//	    			if (matrix_model == 10) { //if 64x64
+//	    				downloadURL = downloadURL_64;
+//	    			}
+//	    			else {
+//	    				downloadURL = downloadURL_32;
+//	    			}
+//	    			
+//			    	Intent i = new Intent(Intent.ACTION_VIEW);
+//			    	i.setData(Uri.parse("http://" + downloadURL));
+//			    	startActivity(i);
+//		       }
+//	    	
+//	    	if (item.getItemId() == R.id.menu_camera)
+//		       {
+//	    		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//	    	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//	    	     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//	    	    }
+//		       }
+//	    	
 	    	
 	    	
 	    	//Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);

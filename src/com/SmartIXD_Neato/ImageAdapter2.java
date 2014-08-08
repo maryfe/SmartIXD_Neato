@@ -55,17 +55,19 @@ import android.widget.ImageView;
     	   if (convertView == null) { // if it's not recycled, initialize some
     	          // attributes
     	    imageView = new ImageView(mContext);
-    	    imageView.setLayoutParams(new GridView.LayoutParams(625,625));
+    	    imageView.setLayoutParams(new GridView.LayoutParams(645,645));
     	    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //    	    imageView.setPadding(4, 4, 4, 4);
     	   } else {
     	    imageView = (ImageView) convertView;
     	   }
 
-    	   Bitmap bm = decodeSampledBitmapFromUri(itemList.get(position), 128,
-    	     128);
+    	   Bitmap bm = decodeSampledBitmapFromUri(itemList.get(position), 1162,
+    	     1162);
 
     	   imageView.setImageBitmap(bm);
+//    	   imageView.setImageResource(itemList.get(position));
+    	   
     	   return imageView;
     	  }
 
