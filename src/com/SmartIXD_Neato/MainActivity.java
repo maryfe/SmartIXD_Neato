@@ -188,7 +188,8 @@ public class MainActivity extends IOIOActivity implements OnItemClickListener, O
     private static String GIF64Path =  Environment.getExternalStorageDirectory() + "/SmartIXD_Neato/gif64/";  //gifs 64x64, there will be a decoded directory here
     private static String userPNGPath =  Environment.getExternalStorageDirectory() + "/SmartIXD_Neato/userpng/"; //user supplied pngs
     private static String userGIFPath =  Environment.getExternalStorageDirectory() + "/SmartIXD_Neato/usergif/";  //user supplied gifs, there will be a decoded directory here
-        
+    private static String ourGIFPath =  Environment.getExternalStorageDirectory() + "/SmartIXD_Neato/realgif/"; //This is a quick hack to have out GIF seperate from the gridview 
+    
     //private String artpath = "/media";
     private static Context context;
     private Context frameContext;
@@ -1368,6 +1369,9 @@ private void copyGIF64Source() {
 	  	     ///****************************
     		  
 	    	imagePath = (String) parent.getItemAtPosition(position);
+
+        
+	    	
 	    	originalImagePath = (String) parent.getItemAtPosition(position);
 	        selectedFileName = imagePath;
 	        //here we need to get the file name to see if the file has already been decoded
@@ -1531,7 +1535,17 @@ public void onItemClick(AdapterView<?> parent, View v, int position, long id) { 
 			  	     }
 			  	     ///****************************
 		    		  
-			    	imagePath = (String) parent.getItemAtPosition(position);
+			    	
+			  	    imagePath = (String) parent.getItemAtPosition(position);
+			  	    
+//			  	    String hello=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
+//			  	    imagePath=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
+			  	    
+			  	    //THIS IS WHERE WE SEND THE DATA...MARK BRENEMAN...
+//			    	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+			  	    Toast.makeText(MainActivity.this, "" + imagePath, Toast.LENGTH_SHORT).show();	
+//			  	  Toast.makeText(MainActivity.this, "" + hello, Toast.LENGTH_SHORT).show();	
+			  	    
 			    	originalImagePath = (String) parent.getItemAtPosition(position);
 			        selectedFileName = imagePath;
 			        //here we need to get the file name to see if the file has already been decoded
