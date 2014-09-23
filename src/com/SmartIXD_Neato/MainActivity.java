@@ -1515,11 +1515,13 @@ private void copyGIF64Source() {
     	return true;
     }
 }
-    
+
+MediaPlayer mp;	
 
 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {    //we go here when the user tapped an image from the initial grid    
       
 //Called On Click
+	
 	     
 	        if (deviceFound == 1) { 
 			  		//********we need to reset everything because the user could have been already running an animation
@@ -1538,6 +1540,33 @@ public void onItemClick(AdapterView<?> parent, View v, int position, long id) { 
 			    	
 			  	    imagePath = (String) parent.getItemAtPosition(position);
 			  	    
+			  	  //SOUNDS MARK BRENEMAN
+			   	  if (position == 0) {
+			  		  mp = MediaPlayer.create(MainActivity.this,R.raw.tile1);
+			          mp.start();
+			        } else if (position == 1){
+			          mp = MediaPlayer.create(MainActivity.this,R.raw.tile2);
+			          mp.start();
+			        }else if (position == 2) {
+	        		  mp = MediaPlayer.create(MainActivity.this,R.raw.tile3);
+	        		  mp.start();
+	        	  	} else if (position == 3){
+		              mp = MediaPlayer.create(MainActivity.this,R.raw.tile4);
+		              mp.start();
+		        	}else if (position == 4){
+		              mp = MediaPlayer.create(MainActivity.this,R.raw.tile5);
+		              mp.start();
+		        	}else if(position == 5){
+		              mp = MediaPlayer.create(MainActivity.this,R.raw.tile6);
+		              mp.start();
+		            }
+	        	  
+	        
+			  	    
+			  	    
+			  	    
+			  	    
+
 //			  	    String hello=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
 //			  	    imagePath=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
 			  	    
@@ -1549,7 +1578,7 @@ public void onItemClick(AdapterView<?> parent, View v, int position, long id) { 
 			    	originalImagePath = (String) parent.getItemAtPosition(position);
 			        selectedFileName = imagePath;
 			        //here we need to get the file name to see if the file has already been decoded
-			        //file name will be in a format like this sdcard/pixel/pixerinteractive/rain.gif , we want to extra just rain
+			        //file name will be in a format like this sdcard/pixel/pixerinteractive/rain.gif , we want to exta just rain
 			        String delims = "[/]";
 			        String[] aFileName = selectedFileName.split(delims);
 			        int aFileNameLength = aFileName.length;

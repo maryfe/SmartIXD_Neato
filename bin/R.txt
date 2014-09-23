@@ -52,6 +52,12 @@ int raw selectimage32 0x7f050011
 int raw selectimage64 0x7f050012
 int raw selectpic 0x7f050013
 int raw selectpic32 0x7f050014
+int raw tile1 0x7f050015
+int raw tile2 0x7f050016
+int raw tile3 0x7f050017
+int raw tile4 0x7f050018
+int raw tile5 0x7f050019
+int raw tile6 0x7f05001a
 int string BootloaderVersionString 0x7f070004
 int string FPSOverrideDefault 0x7f070025
 int string FPSOverrideSummary 0x7f070023

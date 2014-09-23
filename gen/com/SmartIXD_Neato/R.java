@@ -75,6 +75,12 @@ public final class R {
         public static final int selectimage64=0x7f050012;
         public static final int selectpic=0x7f050013;
         public static final int selectpic32=0x7f050014;
+        public static final int tile1=0x7f050015;
+        public static final int tile2=0x7f050016;
+        public static final int tile3=0x7f050017;
+        public static final int tile4=0x7f050018;
+        public static final int tile5=0x7f050019;
+        public static final int tile6=0x7f05001a;
     }
     public static final class string {
         public static final int BootloaderVersionString=0x7f070004;
