@@ -55,9 +55,9 @@ import android.widget.ImageView;
     	   if (convertView == null) { // if it's not recycled, initialize some
     	          // attributes
     	    imageView = new ImageView(mContext);
-    	    imageView.setLayoutParams(new GridView.LayoutParams(620,547));
-    	    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//    	    imageView.setPadding(4, 4, 4, 4);
+    	    imageView.setLayoutParams(new GridView.LayoutParams(600,555));
+//    	    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//    	    imageView.setPadding(50, 50, 50, 50);
     	   } else {
     	    imageView = (ImageView) convertView;
     	   }

@@ -1561,19 +1561,10 @@ public void onItemClick(AdapterView<?> parent, View v, int position, long id) { 
 		              mp.start();
 		            }
 	        	  
-	        
-			  	    
-			  	    
-			  	    
-			  	    
-
-//			  	    String hello=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
-//			  	    imagePath=(String) "/storage/emulated/0/SmartIXD_Neato/realgifs/Tile_"+ position+".gif";
-			  	    
+			   	  	
+	         	    
 			  	    //THIS IS WHERE WE SEND THE DATA...MARK BRENEMAN...
-//			    	Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-			  	    Toast.makeText(MainActivity.this, "" + imagePath, Toast.LENGTH_SHORT).show();	
-//			  	  Toast.makeText(MainActivity.this, "" + hello, Toast.LENGTH_SHORT).show();	
+//			  	    Toast.makeText(MainActivity.this, "" + imagePath, Toast.LENGTH_SHORT).show();		
 			  	    
 			    	originalImagePath = (String) parent.getItemAtPosition(position);
 			        selectedFileName = imagePath;
